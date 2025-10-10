@@ -11,10 +11,10 @@
 <header>
   <h1>IMBT 2026</h1>
   <p>International Math Battle Tournament · 5–11 January 2026 · Bovec, Slovenia</p>
-  <img src="images/logo.jpg" alt="logotip" class="logo">
 </header>
 
-<nav>
+<div class="nav">
+  <div class = "menu">
     <a href="index.html">About</a>
     <a href="battle.html">What is a Math Battle?</a>
     <a href="registration.html">Registration</a>
@@ -22,7 +22,11 @@
     <a href="staff.html">Staff</a>
     <a href="partners.html">Partners</a>
     <a href="mailto:imbt.slo@gmail.com" class="contact-btn">Contact Us</a>
-  </nav>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="menubar()">
+      ☰
+  </a>
+</div>
 
 <section id="partners">
   <h2>Our Partners</h2>
@@ -60,4 +64,15 @@
   </footer>
 
 </body>
+<script>
+function menubar() {
+  x = document.querySelector(".menu")
+  style = getComputedStyle(x)
+  if (style.display === "none") {
+    x.classList.add("menu-grid")
+  } else {
+    x.classList.remove("menu-grid")
+  } 
+}
+</script>
 </html>
