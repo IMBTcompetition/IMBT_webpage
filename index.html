@@ -2,81 +2,359 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IMBT 2026 – International Math Battle Tournament</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0px;
+      padding: 0px;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: white;
+    }
+    .index {
+      width: 100vw;
+      height: 100vh;
+      margin:0;
+      padding:0;
+      position: absolute;
+      top:0;
+      background: white;
+      overflow: hidden;
+    }
+    .img {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      left: 0;
+      top: 0;
+      object-fit: cover;
+      object-position: center 50%;
+      filter: brightness(0.8);
+      image-rendering: auto;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+      z-index: 0;
+    }
+    .desktop-img { display: block; }
+    .mobile-img { display: none; }
+    @media (max-width: 800px) {
+      .desktop-img { display: none; }
+      .mobile-img { display: block; }
+    }
+    .ellipses {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 90%;
+    }
+   
+   .ellipse-1 {
+  width: 53vw;
+  height: 139vh;
+  left: -14vw;
+  top: 75vh;
+  position: absolute;
+  background: var(--Svijetlo-zelena, #A3B18A);
+  box-shadow: 343.75px 343.75px 343.75px ;
+  border-radius: 9999px;
+  filter: blur(171.88px);
+}
+
+.ellipse-2 {
+  width: 56vw;
+  height: 74vh;
+  left: 27vw;
+  top: 76vh;
+  position: absolute;
+  background: var(--Zelena, #588157);
+  box-shadow: 343.75px 343.75px 343.75px ;
+  border-radius: 9999px;
+  filter: blur(171.88px);
+}
+
+.ellipse-3 {
+  width: 38vw;
+  height: 73vh;
+  left: 70vw;
+  top: 67vh;
+  position: absolute;
+  background: var(--Maslinasta, #3A5A40);
+  box-shadow: 343.75px 343.75px 343.75px ;
+  border-radius: 9999px;
+  filter: blur(171.88px);
+}
+
+@media (max-width: 800px) {
+  .ellipse-1 {
+    width: 70vw;
+    height: 60vh;
+    left: -20vw;
+    top: 60vh;
+  
+  }
+  .ellipse-2 {
+    width: 75vw;
+    height: 40vh;
+    left: 10vw;
+    top: 75vh;
+  }
+  .ellipse-3 {
+    width: 50vw;
+    height: 40vh;
+    left: 55vw;
+    top: 65vh;
+  }
+}
+    .hero {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      margin-top: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero .imbt_span {
+      color: white;
+      font-size: 120px;
+      font-family: Roboto;
+      font-weight: 800;
+      word-wrap: break-word;
+      filter: url(#inner-shadow);
+    }
+    .hero .internationalmathbattletournament_span {
+      color: white;
+      font-size: 30px;
+      font-family: Roboto;
+      font-weight: 700;
+      margin-top: -5%;
+      word-wrap: break-word;
+      line-height: normal;
+    }
+    .hero .f-11january2026bovecslovenia_span {
+      color: white;
+      font-size: 20px;
+      font-family: Roboto;
+      font-weight: 400;
+      word-wrap: break-word;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      margin-top: 5%;
+    }
+    .rectangle-3 {
+  width: 170px;
+  height: 44px;
+  position: static;
+  left: unset;
+  top: unset;
+  margin: 0;
+  background: var(--Svijetla, #DAD7CD);
+  border-radius: 50px;
+  display: flex;           
+  align-items: center;        
+  justify-content: center;   
+}
+
+.learnmore_span {
+  color: var(--Tamno-zelena, #344E41);
+  font-size: 20px;
+  font-family: Outfit;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+
+.rectangle-2 {
+  width: 170px;
+  height: 44px;
+  position: static;
+  left: unset;
+  top: unset;
+  margin: 0;
+  background: var(--Svijetla, #DAD7CD);
+  border-radius: 50px;
+  display: flex;              
+  align-items: center;        
+  justify-content: center;
+}
+
+.register_span {
+  color: var(--Tamno-zelena, #344E41);
+  font-size: 20px;
+  font-family: Outfit;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+    .rectangle-1 {
+  width: 100%;
+  height: 70px;
+  left: 0px;
+  top: -3.75px;
+  position: absolute;
+  background: linear-gradient(90deg, #DAD7CD 0%, #A3B18A 100%);
+  display: flex;              
+  align-items: center;        
+  justify-content: center;
+  z-index: 3;
+}
+   .menu {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+  z-index: 4;
+}
+.menu span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background: #344E41;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+   .rectangle-1 nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .rectangle-1 {
+    justify-content: flex-end;
+    padding-right: 1rem;
+  }
+  .rectangle-1 nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100vw;
+    background: linear-gradient(90deg, #DAD7CD 0%, #A3B18A 100%);
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .rectangle-1 nav.open {
+    display: flex;
+  }
+  .menu {
+    display: flex;
+  }
+     
+}
+    .about_span,.battle_span, .registration_span, .eventinfo_span, .staff_span, .partners_span, .contactus_span {
+      color: #344E41;
+      font-size: 20px;
+      padding: 1rem 1.5rem;
+      font-family: Outfit;
+      font-weight: 400;
+      word-wrap: break-word;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+     a,
+     a:link,
+     a:visited,
+     a:hover,
+     a:active,
+     a:focus {
+      color: inherit;
+      text-decoration: none;
+      background: none;
+      border: none;
+    }
+
+
+     a {
+      display: inline-block;
+    }
+  </style>
+  <svg width="0" height="0">
+    <filter id="inner-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="0" dy="4" />
+      <feGaussianBlur stdDeviation="8" result="offset-blur" />
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+      <feFlood flood-color="black" flood-opacity="0.7" result="color" />
+      <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+      <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+    </filter>
+  </svg>
 </head>
 <body>
-
-<header>
-  <h1>IMBT 2026</h1>
-  <p>International Math Battle Tournament · 5–11 January 2026 · Bovec, Slovenia</p>
-</header>
-
-<div class="nav">
-  <div class = "menu">
-    <a href="index.html">About</a>
-    <a href="battle.html">What is a Math Battle?</a>
-    <a href="registration.html">Registration</a>
-    <a href="event_info.html">Event info</a>
-    <a href="staff.html">Staff</a>
-    <a href="partners.html">Partners</a>
-    <a href="mailto:imbt.slo@gmail.com" class="contact-btn">Contact Us</a>
-  </div>
-  <a href="javascript:void(0);" class="icon" onclick="menubar()">
-      ☰
-  </a>
-</div>
-
-
-<div class="social-buttons-wrap">
-  <a href="mailto:imbt.slo@gmail.com" class="social-btn">
-    <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
-      <path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 0v.01L12 13 20 4.01V4H4zm16 2.99l-8 7.99-8-7.99V20h16V6.99z"/>
-    </svg>
-  </a>
-  <a href="https://www.instagram.com/imbt.slo" class="social-btn">
-    <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
-      <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 1.5a1 1 0 011 1V7a1 1 0 01-1 1h-2.5a1 1 0 01-1-1V4.5a1 1 0 011-1H17zm-5 3.5a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/>
-    </svg>
-  </a>
-  <a href="https://www.facebook.com/imbt.slo" class="social-btn">
-    <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
-      <path d="M22 12a10 10 0 10-11.5 9.95v-7.05h-2.15v-2.9h2.15V9.25c0-2.13 1.26-3.3 3.18-3.3.92 0 1.88.16 1.88.16v2.07h-1.06c-1.04 0-1.37.65-1.37 1.32v1.58h2.33l-.37 2.9h-1.96v7.05A10 10 0 0022 12z"/>
-    </svg>
-  </a>
-</div>
-
-  <section id="about">
-    <h2>About IMBT</h2>
-    <p>
-      The <strong>International Math Battle Tournament (IMBT)</strong> is a one-week international team tournament in mathematics for high-school students from around the world. 
-    </p>
-    <p>
-      At IMBT teams of young mathematicians face off in high-level, time-pressured problem-solving battles. The tournament brings together students from across the world to celebrate mathematical thinking, strategy, and international collaboration.
-    </p>
-    <p>
-        The main aims of IMBT are to stimulate and foster a love for mathematics, develop advanced problem-solving skills and logical thinking, and introduce students to new mathematical concepts.
-    </p>
-    <div class="highlight">
-      The official language of the tournament is English.
+  <div class="index">
+    <img class="img desktop-img" src="images/bovec.jpg" alt="Bovec Desktop" />
+    <img class="img mobile-img" src="images/bovec-mobile.png" alt="Bovec Mobile" />
+    <div class="ellipses">
+      <div class="ellipse ellipse-1"></div>
+      <div class="ellipse ellipse-2"></div>
+      <div class="ellipse ellipse-3"></div>
     </div>
-  </section>
-
-  <footer>
-    <p>IMBT 2026 · Bovec, Slovenia · <a href="mailto:imbt.slo@gmail.com" class="email-link">imbt.slo@gmail.com</a></p>
-  </footer>
-
+    <div class="hero">
+      <span class="imbt_span">IMBT</span>
+      <span class="internationalmathbattletournament_span">INTERNATIONAL MATH<br/> BATTLE TOURNAMENT</span>
+      <span class="f-11january2026bovecslovenia_span">5-11 January 2026 · Bovec, Slovenia</span>
+      <div class="hero-buttons">
+        <a href="battle.html"><div class="rectangle-3">
+          <span class="learnmore_span">LEARN MORE</span>
+        </div></a>
+        <a href="registration.html"><div class="rectangle-2">
+          <span class="register_span">REGISTER</span>
+        </div></a>
+      </div>
+    </div>
+    <div class="rectangle-1">
+      <button class="menu" id="menu" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="mainmenu">
+        <span class="about_span"><a href="novi.html">ABOUT</a></span>
+        <span class="battle_span"><a href="battle.html">WHAT IS A MATH BATTLE?</a></span>
+        <span class="registration_span"><a href="registration.html">REGISTRATION</a></span>
+        <span class="eventinfo_span"><a href="event_info.html">EVENT INFO</a></span>
+        <span class="staff_span"><a href="staff.html">STAFF</a></span>
+        <span class="partners_span"><a href="partners.html">PARTNERS</a></span>
+        <span class="contactus_span"><a href="mailto:imbt.slo@gmail.com">CONTACT US</a></span>
+      </nav>
+    </div>
+  </div>
+  <script>
+    const menu = document.getElementById('menu');
+    const mainMenu = document.getElementById('mainmenu');
+    let menuOpen = false;
+    menu.addEventListener('click', function() {
+      menuOpen = !menuOpen;
+      if(menuOpen) {
+        mainMenu.classList.add('open');
+      } else {
+        mainMenu.classList.remove('open');
+      }
+    });
+  </script>
 </body>
-<script>
-function menubar() {
-  x = document.querySelector(".menu")
-  style = getComputedStyle(x)
-  if (style.display === "none") {
-    x.classList.add("menu-grid")
-  } else {
-    x.classList.remove("menu-grid")
-  } 
-}
-</script>
 </html>
