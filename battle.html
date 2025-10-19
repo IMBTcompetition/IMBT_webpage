@@ -5,28 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IMBT 2026 – International Math Battle Tournament</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+
+
+
+
 </head>
+
+
 <body>
 
+    <div class="rectangle-1">
+      <button class="menu" id="menu" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="mainmenu">
+        <span class="about_span"><a href="index.html">ABOUT</a></span>
+        <span class="battle_span"><a href="battle.html">WHAT IS A MATH BATTLE?</a></span>
+        <span class="registration_span"><a href="registration.html">REGISTRATION</a></span>
+        <span class="eventinfo_span"><a href="event_info.html">EVENT INFO</a></span>
+        <span class="staff_span"><a href="staff.html">STAFF</a></span>
+        <span class="partners_span"><a href="partners.html">PARTNERS</a></span>
+        <span class="contactus_span"><a href="mailto:imbt.slo@gmail.com">CONTACT US</a></span>
+      </nav>
+    </div>
+
+
 <header>
-  <h1>IMBT 2026</h1>
-  <p>International Math Battle Tournament · 5–11 January 2026 · Bovec, Slovenia</p>
+  <h1>What is a Math Battle?</h1>
 </header>
 
-<div class="nav">
-  <div class = "menu">
-    <a href="index.html">About</a>
-    <a href="battle.html">What is a Math Battle?</a>
-    <a href="registration.html">Registration</a>
-    <a href="event_info.html">Event info</a>
-    <a href="staff.html">Staff</a>
-    <a href="partners.html">Partners</a>
-    <a href="mailto:imbt.slo@gmail.com" class="contact-btn">Contact Us</a>
-  </div>
-  <a href="javascript:void(0);" class="icon" onclick="menubar()">
-      ☰
-  </a>
-</div>
+
 
 
 <div class="social-buttons-wrap">
@@ -48,9 +59,9 @@
 </div>
 
   <section id="battle">
-    <h2>What is a Math Battle?</h2>
+    
     <p>
-      A <strong> Math Battle </strong> (<i>mathboj</i>) is a team-based competition usually held among high-school students and associated with math olympiads.
+      A <strong> Math Battle </strong> (<i>mathboj</i> ) is a team-based competition usually held among high-school students and associated with math olympiads.
       <br>It’s not just about solving problems — it’s about thinking fast, explaining clearly, and outsmarting your opponents.</br>
     </p>
     <p>A Math Battle includes both a problem-solving stage and a presentation to the jury stage.</p>
@@ -90,15 +101,30 @@
   </footer>
 
 </body>
-<script>
-function menubar() {
-  x = document.querySelector(".menu")
-  style = getComputedStyle(x)
-  if (style.display === "none") {
-    x.classList.add("menu-grid")
-  } else {
-    x.classList.remove("menu-grid")
-  } 
-}
-</script>
+  <script>
+    const menu = document.getElementById('menu');
+    const mainMenu = document.getElementById('mainmenu');
+    let menuOpen = false;
+    menu.addEventListener('click', function() {
+      menuOpen = !menuOpen;
+      if(menuOpen) {
+        mainMenu.classList.add('open');
+      } else {
+        mainMenu.classList.remove('open');
+      }
+    });
+  </script>
+
+<svg width="0" height="0"  aria-hidden="true" focusable="false"
+     style="position:absolute; width:0; height:0; overflow:hidden; pointer-events:none; left:0; top:0;">
+    <filter id="inner-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="0" dy="4" />
+      <feGaussianBlur stdDeviation="8" result="offset-blur" />
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+      <feFlood flood-color="black" flood-opacity="0.7" result="color" />
+      <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+      <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+    </filter>
+</svg>
+
 </html>
