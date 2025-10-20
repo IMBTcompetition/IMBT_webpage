@@ -179,18 +179,18 @@
 }
 
 
-.rectangle-2 {
+  .rectangle-2 {
   width: 170px;
   height: 44px;
-  position: static;
-  left: unset;
-  top: unset;
+  position: relative;
   margin: 0;
   background: var(--Svijetla, #DAD7CD);
   border-radius: 50px;
-  display: flex;              
-  align-items: center;        
+  display: flex;
+  align-items: center;
   justify-content: center;
+  overflow: hidden; 
+  z-index: 1;
 }
 
 .register_span {
@@ -348,6 +348,50 @@
     }
 
 
+.register-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  margin: 0;
+  gap: 0;
+}
+
+
+.rectangle-2::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  top: -14px;
+  height: 28px;
+  background: linear-gradient(180deg,#ff6b6b 0%,#e14d4d 70%);
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+  z-index: 0;
+}
+
+.register-count-text {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, -8px);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  color: #fff;
+  font-family: Outfit, Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  white-space: nowrap;
+}
+.register-count-text .rc-num { font-size: 14px; line-height: 1; }
+.register-count-text small { font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.95; letter-spacing: 0.3px; }
+
 
   </style>
   <svg width="0" height="0">
@@ -378,9 +422,14 @@
         <a href="battle.html"><div class="rectangle-3">
           <span class="learnmore_span">LEARN MORE</span>
         </div></a>
-        <a href="registration.html"><div class="rectangle-2">
-          <span class="register_span">REGISTER</span>
-        </div></a>
+           <div class="register-wrapper">
+    <div id="register-countdown" class="register-count-text" aria-live="polite">
+      <span class="rc-num">—</span><small>days left</small>
+    </div>
+    <a href="registration.html"><div class="rectangle-2">
+      <span class="register_span">REGISTER</span>
+    </div></a>
+  </div>
       </div>
        <div id="countdown" class="countdown" aria-live="polite">
         <div class="time"><span id="cd-days">00</span><small>DAYS</small></div>
@@ -459,6 +508,25 @@
       const timer = setInterval(update, 1000);
     })();
 
+    (function(){
+  const regTarget = new Date('2025-11-15T00:00:00');
+  const regEl = document.getElementById('register-countdown');
+
+  function updateReg(){
+    const now = new Date();
+    const diff = regTarget - now;
+    if (diff <= 0) {
+      regEl.innerHTML = `<span class="rc-num">—</span><small>closed</small>`;
+      if (regTimer) clearInterval(regTimer);
+      return;
+    }
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    regEl.innerHTML = `<span class="rc-num">${days}</span><small>${days === 1 ? 'day left' : 'days left'}</small>`;
+  }
+
+  updateReg();
+  let regTimer = setInterval(updateReg, 1000 * 60 * 30);
+})();
   </script>
 </body>
 </html>
