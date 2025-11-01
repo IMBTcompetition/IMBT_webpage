@@ -159,15 +159,15 @@
     .rectangle-3 {
   width: 170px;
   height: 44px;
-  position: static;
-  left: unset;
-  top: unset;
+  position: relative;
   margin: 0;
   background: var(--Svijetla, #DAD7CD);
   border-radius: 50px;
-  display: flex;           
-  align-items: center;        
-  justify-content: center;   
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+  z-index: 1;
 }
 
 .learnmore_span {
@@ -393,6 +393,55 @@
 .register-count-text small { font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.95; letter-spacing: 0.3px; }
 
 
+.learn-more-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  margin: 0;
+  gap: 0;
+}
+
+
+.rectangle-3::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  top: -14px;
+  height: 28px;
+  background: linear-gradient(180deg,#ff6b6b 0%,#e14d4d 70%);
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+  z-index: 0;
+}
+
+.problem-proposals-text {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, -8px);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  color: #fff;
+  font-family: Outfit, Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  white-space: nowrap;
+}
+
+
+
+.problem-proposals-text small { font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.95; letter-spacing: 0.3px; }
+
+
+
+
   </style>
   <svg width="0" height="0">
     <filter id="inner-shadow" x="-50%" y="-50%" width="200%" height="200%">
@@ -419,9 +468,14 @@
       <span class="internationalmathbattletournament_span">INTERNATIONAL MATH<br/> BATTLE TOURNAMENT</span>
       <span class="f-11january2026bovecslovenia_span">5-11 January 2026 · Bovec, Slovenia</span>
       <div class="hero-buttons">
+        <div class="learn-more-wrapper">
+        <div class="problem-proposals-text" aria-live="polite">
+          <small>PROBLEM PROPOSALS</small>
+        </div>
         <a href="battle.html"><div class="rectangle-3">
           <span class="learnmore_span">LEARN MORE</span>
         </div></a>
+        </div>
            <div class="register-wrapper">
     <div id="register-countdown" class="register-count-text" aria-live="polite">
       <span class="rc-num">—</span><small>days left</small>
