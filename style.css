@@ -13,7 +13,7 @@ body {
 }
 
 header {
-  background: url("images/bovec.jpg") no-repeat center center/cover;
+  background: url("images/IMBT_closing ceremony.jpeg") no-repeat center center/cover;
   background-position: 50% 45%;
   color: white;
   text-align: center;
@@ -485,4 +485,5 @@ header img.logo {
       .countdown .time { min-width: 50px; padding: 6px 8px; }
       .countdown .time span { font-size: 18px; }
       .countdown .time small { font-size: 10px; }
+
     }
