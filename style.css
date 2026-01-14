@@ -25,7 +25,7 @@ header {
 
 @media (max-width: 800px) {
   header {
-     background: url("images/bovec-mobile2.png") no-repeat center center/cover;
+     background: url("images/IMBT_closing ceremony.jpeg") no-repeat center center/cover;
       background-position: 50% 70%;
   }
     }
@@ -487,3 +487,4 @@ header img.logo {
       .countdown .time small { font-size: 10px; }
 
     }
+
