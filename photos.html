@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMBT 2026 – International Math Battle Tournament</title>
+<link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;800&family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- GALLERY SPECIFIC STYLES --- */
+    :root {
+      --bg-color: #111;
+      --text-color: #fff;
+      --accent-color: #3d84ff; /* Adjust to match your specific blue */
+    }
+
+    body {
+     overflow-x: hidden; /* Prevent horizontal scroll */
+
+    }
+
+    .main {
+      position: relative;
+      margin-top: -3.75px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding:0px;
+    }
+ 
+
+    /* Hero Section */
+    .gallery-hero {
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      background: radial-gradient(circle at center, #2a2a2a 0%, #111 70%);
+      margin-bottom: 4rem;
+    }
+
+    .gallery-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -2px;
+      /* Gradient Text */
+      background: linear-gradient(45deg, #fff, #888);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gallery-hero p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.2rem;
+      color: #aaa;
+      max-width: 600px;
+      margin-top: 1rem;
+    }
+
+    /* Scrollytelling Layout */
+    .timeline-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .day-section {
+      display: flex;
+      flex-wrap: wrap; /* Wraps on mobile */
+      margin-bottom: 8rem;
+      position: relative;
+      border-left: 1px solid #333;
+      padding-left: 2rem;
+    }
+
+    /* Sticky Side Text */
+    .day-info {
+      flex: 0 0 250px;
+      position: sticky;
+      top: 120px; /* Stick below the nav */
+      align-self: flex-start;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .day-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--accent-color);
+      opacity: 0.2;
+      position: absolute;
+      top: -30px;
+      left: -20px;
+      z-index: -1;
+    }
+
+    .day-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .day-desc {
+      font-family: 'Roboto', sans-serif;
+      color: #999;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* The Masonry Grid */
+    .day-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      grid-auto-flow: dense; /* Helps fill gaps */
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #222;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      
+      /* Initial state for scrolling animation */
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .photo-card.reveal {
+      animation: fadeInUp 0.8s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+    }
+
+    /* Spanning for visual variety */
+    .photo-card.wide { grid-column: span 2; }
+    .photo-card.tall { grid-row: span 2; }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox Overlay */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .lightbox.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+      border-radius: 4px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 3rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .day-section {
+        flex-direction: column;
+        padding-left: 0;
+        border-left: none;
+      }
+      .day-info {
+        position: relative;
+        top: 0;
+        width: 100%;
+        margin-bottom: 2rem;
+        padding-left: 1rem;
+        border-left: 4px solid var(--accent-color);
+        z-index : 1;
+      }
+
+      .day-number {
+        left: 10px;    /* Bring it inside the screen */
+        top: -30px;    /* Adjust vertical position */
+        font-size: 4rem; /* Make it slightly smaller on mobile */
+        z-index: -1;
+      }
+
+
+
+      .gallery-hero h1 { font-size: 2.5rem; }
+    }
+
+
+  </style>
+   
+</head>
+
+
+<body>
+
+    <div class="rectangle-1">
+       <a class="dmfa-logo" href="http://www.dmfa.si">
+          <img src="images/LogoDMFA.png" alt="DMFA Slovenije" title="DMFA Slovenije" />
+        </a>
+      <button class="menu" id="menu" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+       <nav id="mainmenu">
+         <div class="dropdown">
+          <span class="dropdown-cat">ABOUT</span>
+          <div class="dropdown-content">
+            <a href="index.html">HOME</a>
+            <a href="staff.html">STAFF</a>
+            <a href="partners.html">PARTNERS</a>
+            <a href="mailto:imbt.slo@gmail.com">CONTACT US</a>
+          </div>
+        </div>
+       
+         <div class="dropdown">
+          <span class="dropdown-cat">TOURNAMENT</span>
+          <div class="dropdown-content">
+            <a href="battle.html">MATH BATTLE</a>
+            <a href="competition.html">COMPETITION</a>
+          </div>
+        </div>
+
+        <span class="dropdown-rest"><a href="registration.html">REGISTRATION</a></span>
+        <span class="dropdown-rest"><a href="event_info.html">EVENT INFO</a></span>
+        <span class="dropdown-rest"><a href="photos.html">PHOTOS</a></span>
+
+      </nav>
+    </div>
+<div class="main">
+    
+    <div class="gallery-hero">
+      <h1>Memories of 2026</h1>
+      <p>Seven days of mathematics, friendship, and adventure in Bovec.</p>
+    </div>
+
+    <div class="timeline-container">
+
+      <section class="day-section">
+        <div class="day-info">
+          <span class="day-number">01</span>
+          <h2 class="day-title">Arrivals & Opening</h2>
+          <p class="day-desc">Despite the heavy snowfall, all participants arrived safely and were ready for the battle to begin.</p>
+        </div>
+        <div class="day-grid">
+            <div class="photo-card wide"><img src="images_2026/OC (9).jpg" alt="Day 1"> </div>
+            <div class="photo-card"><img src="images_2026/OC (1).jpg" alt="Day 1"></div>
+            <div class="photo-card tall"><img src="images_2026/OC (2).jpg" alt="Day 1"></div>
+            <div class="photo-card"><img src="images_2026/OC (3).jpg" alt="Day 1"></div>
+            <div class="photo-card"><img src="images_2026/OC (4).jpg" alt="Day 1"></div>
+            <div class="photo-card"><img src="images_2026/OC (5).jpg" alt="Day 1"></div>
+            <div class="photo-card"><img src="images_2026/OC (6).jpg" alt="Day 1"> </div>
+            <div class="photo-card"><img src="images_2026/OC (7).jpg" alt="Day 1"> </div>
+            <div class="photo-card"><img src="images_2026/OC (8).jpg" alt="Day 1"> </div>
+        </div>
+      </section>
+
+   
+      <section class="day-section">
+        <div class="day-info">
+          <span class="day-number">02</span>
+          <h2 class="day-title">First Battle</h2>
+          <p class="day-desc">It was an intense start to the competition, with students demonstrating exceptional teamwork and problem-solving skills.</p>
+        </div>
+        <div class="day-grid">
+            <div class="photo-card"><img src="images_2026/Day1 (1).jpg" alt="Day 2"></div>
+            <div class="photo-card wide"><img src="images_2026/Day1 (2).jpg" alt="Day 2"></div>
+            <div class="photo-card tall"><img src="images_2026/Day1 (3).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (4).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (5).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (6).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (7).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (8).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (9).jpg" alt="Day 2"></div>  
+            <div class="photo-card wide"><img src="images_2026/Day1 (10).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (11).jpg" alt="Day 2"></div>
+            <div class="photo-card tall"><img src="images_2026/Day1 (12).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (13).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (14).jpg" alt="Day 2"></div>
+            <div class="photo-card"><img src="images_2026/Day1 (15).jpg" alt="Day 2"></div>
+
+        </div>
+      </section>
+      
+      <section class="day-section">
+        <div class="day-info">
+          <span class="day-number">03</span>
+          <h2 class="day-title">Second Battle</h2>
+          <p class="day-desc">The second day concluded with an energetic evening of indoor sports, allowing participants to unwind and bond over friendly competition.</p>
+        </div>
+        <div class="day-grid">
+           <div class="photo-card wide"><img src="images_2026/Day2 (1).jpg" alt="Day 3"></div>
+           <div class="photo-card"><img src="images_2026/Day2 (2).jpg" alt="Day 3"></div>
+           <div class="photo-card"><img src="images_2026/Day2 (3).jpg" alt="Day 3"></div>
+           <div class="photo-card tall"><img src="images_2026/Day2 (4).jpg" alt="Day 3"></div>
+           <div class="photo-card wide"><img src="images_2026/Day2 (5).jpg" alt="Day 3"></div>
+           <div class="photo-card"><img src="images_2026/Day2 (6).jpg" alt="Day 3"></div>
+           <div class="photo-card"><img src="images_2026/Day2 (7).jpg" alt="Day 3"></div>
+           <div class="photo-card tall"><img src="images_2026/Day2 (8).jpg" alt="Day 3"></div>
+           <div class="photo-card wide"><img src="images_2026/Day2 (9).jpg" alt="Day 3"></div>
+           <div class="photo-card"><img src="images_2026/Day2 (10).jpg" alt="Day 3"></div>
+
+        </div>
+      </section>
+
+      <section class="day-section">
+        <div class="day-info"> 
+            <span class="day-number">04</span>
+            <h2 class="day-title">Third battle</h2>
+            <p class="day-desc">The focus shifted from mathematical equations to social deduction as participants engaged in high-stakes games like Avalon and Mafia.</p>
+        </div>
+        <div class="day-grid">
+           <div class="photo-card wide"><img src="images_2026/Day3 (1).jpg" alt="Day 4"></div>
+           <div class="photo-card"><img src="images_2026/Day3 (2).jpg" alt="Day 4"></div>
+           <div class="photo-card"><img src="images_2026/Day3 (3).jpg" alt="Day 4"></div>
+           <div class="photo-card tall"><img src="images_2026/Day3 (4).jpg" alt="Day 4"></div>
+           <div class="photo-card wide"><img src="images_2026/Day3 (5).jpg" alt="Day 4"></div>
+           <div class="photo-card"><img src="images_2026/Day3 (6).jpg" alt="Day 4"></div>
+           <div class="photo-card"><img src="images_2026/Day3 (7).jpg" alt="Day 4"></div>
+           <div class="photo-card tall"><img src="images_2026/Day3 (8).jpg" alt="Day 4"></div>
+           <div class="photo-card wide"><img src="images_2026/Day3 (9).jpg" alt="Day 4"></div>
+           <div class="photo-card"><img src="images_2026/Day3 (10).jpg" alt="Day 4"></div>
+           <div class="photo-card wide"><img src="images_2026/Day3 (11).jpg" alt="Day 4"></div>
+           <div class="photo-card"><img src="images_2026/Day3 (12).jpg" alt="Day 4"></div>
+           <div class="photo-card"><img src="images_2026/Day3 (13).jpg" alt="Day 4"></div>
+           <div class="photo-card tall"><img src="images_2026/Day3 (14).jpg" alt="Day 4"></div>
+           <div class="photo-card wide"><img src="images_2026/Day3 (15).jpg" alt="Day 4"></div>
+           <div class="photo-card"><img src="images_2026/Day3 (16).jpg" alt="Day 4"></div>
+           <div class="photo-card"><img src="images_2026/Day3 (17).jpg" alt="Day 4"></div>
+           <div class="photo-card tall"><img src="images_2026/Day3 (18).jpg" alt="Day 4"></div>
+           <div class="photo-card wide"><img src="images_2026/Day3 (19).jpg" alt="Day 4"></div>
+        </div>
+      </section>
+
+      <section class="day-section">
+        <div class="day-info"> 
+            <span class="day-number">05</span>
+            <h2 class="day-title">Final battle</h2>
+            <p class="day-desc">The energy reached its peak during the finals, featuring a high-stakes Mario Kart showdown for Captain's Contest.</p>
+        </div>
+        <div class="day-grid">
+           <div class="photo-card wide"><img src="images_2026/Day4 (1).jpg" alt="Day 5"></div>
+           <div class="photo-card"><img src="images_2026/Day4 (2).jpg" alt="Day 5"></div>
+           <div class="photo-card"><img src="images_2026/Day4 (3).jpg" alt="Day 5"></div>
+           <div class="photo-card tall"><img src="images_2026/Day4 (4).jpg" alt="Day 5"></div>
+           <div class="photo-card wide"><img src="images_2026/Day4 (5).jpg" alt="Day 5"></div>
+           <div class="photo-card"><img src="images_2026/Day4 (6).jpg" alt="Day 5"></div>
+           <div class="photo-card"><img src="images_2026/Day4 (7).jpg" alt="Day 5"></div>
+           <div class="photo-card tall"><img src="images_2026/Day4 (8).jpg" alt="Day 5"></div>
+           <div class="photo-card wide"><img src="images_2026/Day4 (9).jpg" alt="Day 5"></div>
+           <div class="photo-card"><img src="images_2026/Day4 (10).jpg" alt="Day 5"></div>
+           <div class="photo-card wide"><img src="images_2026/Day4 (11).jpg" alt="Day 5"></div>
+           <div class="photo-card"><img src="images_2026/Day4 (12).jpg" alt="Day 5"></div>
+           <div class="photo-card"><img src="images_2026/Day4 (13).jpg" alt="Day 5"></div>
+           <div class="photo-card tall"><img src="images_2026/Day4 (14).jpg" alt="Day 5"></div>
+           <div class="photo-card wide"><img src="images_2026/Day4 (15).jpg" alt="Day 5"></div>
+           <div class="photo-card"><img src="images_2026/Day4 (16).jpg" alt="Day 5"></div>
+        
+        </div>
+      </section>
+
+
+       
+      <section class="day-section">
+        <div class="day-info">
+          <span class="day-number">06</span>
+          <h2 class="day-title">Closing Ceremony</h2>
+          <p class="day-desc">Participants enjoyed a refreshing morning by the emerald waters of the Soča River before gathering for the closing ceremony, where medals were awarded to the top teams.</p>
+        </div>
+        <div class="day-grid">
+            <div class="photo-card wide"><img src="images_2026/CC (8).jpg" alt="Day 6"> </div>
+            <div class="photo-card"><img src="images_2026/CC (1).jpg" alt="Day 6"></div>
+            <div class="photo-card tall"><img src="images_2026/CC (2).jpg" alt="Day 6"></div>
+            <div class="photo-card"><img src="images_2026/CC (3).jpg" alt="Day 6"></div>
+            <div class="photo-card"><img src="images_2026/CC (4).jpg" alt="Day 6"></div>
+            <div class="photo-card"><img src="images_2026/CC (5).jpg" alt="Day 6"></div>
+            <div class="photo-card"><img src="images_2026/CC (6).jpg" alt="Day 6"> </div>
+            <div class="photo-card"><img src="images_2026/CC (7).jpg" alt="Day 6"> </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img src="" alt="Full screen preview" id="lightbox-img">
+    </div>
+
+<footer>
+    <p>IMBT 2026 · Bovec, Slovenia · <a href="mailto:imbt.slo@gmail.com" class="email-link">imbt.slo@gmail.com</a></p>
+</footer>
+</div>
+
+
+
+</body>
+ <script>
+    const menu = document.getElementById('menu');
+    const mainMenu = document.getElementById('mainmenu');
+    let menuOpen = false;
+    menu.addEventListener('click', function() {
+      menuOpen = !menuOpen;
+      if(menuOpen) {
+        mainMenu.classList.add('open');
+      } else {
+        mainMenu.classList.remove('open');
+      }
+    });
+
+
+
+        // 1. Scroll Reveal Animation
+        const photoCards = document.querySelectorAll('.photo-card');
+        
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target); // Run once
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15, // Trigger when 15% is visible
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(revealCallback, revealOptions);
+        photoCards.forEach(card => observer.observe(card));
+
+        // 2. Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Open Lightbox
+        document.querySelectorAll('.photo-card img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        // Close functions
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            setTimeout(() => { lightboxImg.src = ''; }, 300); // Clear source after fade out
+        };
+
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        // Close on clicking backdrop
+        lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox) closeLightbox();
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+
+
+
+  </script>
+
+<svg width="0" height="0"  aria-hidden="true" focusable="false"
+     style="position:absolute; width:0; height:0; overflow:hidden; pointer-events:none; left:0; top:0;">
+    <filter id="inner-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="0" dy="4" />
+      <feGaussianBlur stdDeviation="8" result="offset-blur" />
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+      <feFlood flood-color="black" flood-opacity="0.7" result="color" />
+      <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+      <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+    </filter>
+</svg>
+
+
+</html>

@@ -233,9 +233,9 @@
   display: block;
   width: 28px;
   height: 4px;
-  background: #1D3557;
-  margin: 4px 0;
-  border-radius: 2px;
+  background: #F1FAEE;
+  margin: 3px 0;
+  border-radius: 1px;
   transition: 0.3s;
 }
    .rectangle-1 nav {
@@ -244,8 +244,9 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  height: 100%;
 }
-@media (max-width: 1300px) {
+@media (max-width: 1050px) {
   .rectangle-1 {
     justify-content: flex-end;
     padding-right: 1rem;
@@ -256,6 +257,7 @@
     top: 70px;
     left: 0;
     width: 100vw;
+    height: auto;
     background: linear-gradient(90deg, #F1FAEE 0%, #457B9D 100%);
     flex-direction: column;
     align-items: center;
@@ -270,15 +272,7 @@
   }
      
 }
-    .about_span,.battle_span,.competition_span, .registration_span, .eventinfo_span, .staff_span, .partners_span, .contactus_span {
-      color: #1D3557;
-      font-size: 20px;
-      padding: 1rem 1.5rem;
-      font-family: Outfit;
-      font-weight: 400;
-      word-wrap: break-word;
-      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    }
+ 
 
      a,
      a:link,
@@ -334,6 +328,148 @@
   gap: 0;
 }
 
+    .dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .dropdown-cat , .dropdown-rest {
+      color: #1D3557;
+      font-size: 20px;
+      padding: 1rem 1.5rem;
+      font-family: Outfit;
+      font-weight: 700;
+      cursor: default;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .dropdown > .dropdown-cat { 
+      display: flex;
+      align-items: center;
+      gap: 8px; 
+    }
+
+  
+    .dropdown > .dropdown-cat::after {
+      content: "";
+      width: 0; 
+      height: 0; 
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid #1D3557; 
+      transition: transform 0.2s ease;
+      margin-top: 2px;
+    }
+
+ 
+    .dropdown:hover > .dropdown-cat::after {
+      transform: rotate(180deg);
+    }
+
+
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #F1FAEE;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
+      border-radius: 0 0 10px 10px;
+      flex-direction: column;
+      z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: flex;
+    }
+
+    .dropdown-content a {
+      color: #1D3557;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      font-family: Outfit;
+      font-size: 18px;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(70, 123, 157, 0.1);
+    }
+
+    @media (max-width: 1050px) {
+      .dropdown {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+      }
+      
+      
+      .dropdown {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        .dropdown-cat {
+          display:none;
+        }
+      }
+      .dropdown-cat {
+        display:none;
+      }
+
+      .dropdown-rest {
+        height: auto;
+        display: block;
+        width: 100%;
+        padding: 0; 
+        box-sizing: border-box;
+      }
+
+      .dropdown-rest a {
+        display: block; 
+        width: 100%;
+        padding: 10px; 
+        text-align: center;
+        
+     
+        color: #1D3557;
+        font-family: Outfit;
+        font-size: 18px;
+        font-weight: 400;
+        text-decoration: none;
+        text-shadow: none;
+        box-sizing: border-box;
+      }
+
+
+      .dropdown-rest :hover {
+        background-color: rgba(70, 123, 157, 0.1);
+      } 
+
+
+      .dropdown-content {
+        display: flex; 
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        box-shadow: none;
+        background: transparent;
+        width: 100%;
+        padding: 0;
+      }
+      
+      .dropdown-content a{
+        padding: 10px;
+      }
+    }
+
 
 
 
@@ -387,15 +523,28 @@
         <span></span>
       </button>
       <nav id="mainmenu">
-        
-        <span class="about_span"><a href="index.html">ABOUT</a></span>
-        <span class="battle_span"><a href="battle.html">MATH BATTLE</a></span>
-        <span class="competition_span"><a href="competition.html">COMPETITION</a></span>
-        <span class="registration_span"><a href="registration.html">REGISTRATION</a></span>
-        <span class="eventinfo_span"><a href="event_info.html">EVENT INFO</a></span>
-        <span class="staff_span"><a href="staff.html">STAFF</a></span>
-        <span class="partners_span"><a href="partners.html">PARTNERS</a></span>
-        <span class="contactus_span"><a href="mailto:imbt.slo@gmail.com">CONTACT US</a></span>
+         <div class="dropdown">
+          <span class="dropdown-cat">ABOUT</span>
+          <div class="dropdown-content">
+            <a href="index.html">HOME</a>
+            <a href="staff.html">STAFF</a>
+            <a href="partners.html">PARTNERS</a>
+            <a href="mailto:imbt.slo@gmail.com">CONTACT US</a>
+          </div>
+        </div>
+       
+         <div class="dropdown">
+          <span class="dropdown-cat">TOURNAMENT</span>
+          <div class="dropdown-content">
+            <a href="battle.html">MATH BATTLE</a>
+            <a href="competition.html">COMPETITION</a>
+          </div>
+        </div>
+
+        <span class="dropdown-rest"><a href="registration.html">REGISTRATION</a></span>
+        <span class="dropdown-rest"><a href="event_info.html">EVENT INFO</a></span>
+        <span class="dropdown-rest"><a href="photos.html">PHOTOS</a></span>
+
       </nav>
     </div>
   </div>
