@@ -76,8 +76,8 @@ section {
 section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #344e41;
-  border-bottom: 3px solid #588157;
+  color: #457B9D;
+  border-bottom: 3px solid #A8DADC;
   display: inline-block;
   padding-bottom: 0.3rem;
   font-family: Outfit;
@@ -93,8 +93,8 @@ section h3 {
 }
 
 .highlight {
-  background: #a3b18a54;
-  border-left: 5px solid #588157;
+  background: #F1FAEE;
+  border-left: 5px solid #A8DADC;
   padding: 1rem;
   margin: 1rem 0;
   border-radius: 8px;
@@ -109,7 +109,7 @@ ul {
 }
 
 footer {
-  background: #588157;
+  background: #457B9D;
   color: white;
   text-align: center;
   padding: 1.5rem;
@@ -168,8 +168,8 @@ footer p {
 #partners h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #1e3a8a;
-  border-bottom: 3px solid #22c55e;
+  color: #457B9D;
+  border-bottom: 3px solid #A8DADC;
   display: inline-block;
   padding-bottom: 0.3rem;
 }
@@ -249,7 +249,7 @@ footer p {
 }
 
 .form-btn {
-  background: #588157;
+  background: #457B9D;
   color: white;
   font-weight: bold;
   padding: 0.75rem 1.5rem;
@@ -261,7 +261,7 @@ footer p {
 }
 
 .form-btn:hover {
-  background: #fbbf24;
+  background: #A8DADC;
   transform: translateY(-2px);
 }
 
@@ -305,7 +305,7 @@ header img.logo {
 }
 
 .social-btn svg {
-  fill: #22c55e;
+  fill: #457B9D;
 }
 
 
@@ -344,7 +344,7 @@ header img.logo {
   top: -3.75px;
   padding-bottom: 0;
   margin-bottom: 0;
-  background: linear-gradient(90deg, #DAD7CD 0%, #A3B18A 100%);
+  background: linear-gradient(90deg, #F1FAEE 0%, #457B9D 100%);
   display: flex;              
   align-items: center;        
   justify-content: center;
@@ -367,7 +367,7 @@ header img.logo {
   display: block;
   width: 28px;
   height: 4px;
-  background: #344E41;
+  background: #1D3557;
   margin: 4px 0;
   border-radius: 2px;
   transition: 0.3s;
@@ -390,7 +390,7 @@ header img.logo {
     top: 70px;
     left: 0;
     width: 100vw;
-    background: linear-gradient(90deg, #DAD7CD 0%, #A3B18A 100%);
+    background: linear-gradient(90deg, #F1FAEE 0%, #457B9D 100%);
     flex-direction: column;
     align-items: center;
     z-index: 3;
@@ -405,8 +405,8 @@ header img.logo {
      
 }
 
-.about_span,.battle_span, .registration_span, .eventinfo_span, .staff_span, .partners_span, .contactus_span {
-      color: #344E41;
+.about_span,.battle_span,.competition_span, .registration_span, .eventinfo_span, .staff_span, .partners_span, .contactus_span {
+      color: #1D3557;
       font-size: 20px;
       padding: 1rem 1.5rem;
       font-family: Outfit;
@@ -488,3 +488,162 @@ header img.logo {
 
     }
 
+
+
+.days-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+    max-width: 600px; 
+    margin: 5px auto;
+    padding: 0 20px;
+}
+
+.day-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    padding: 25px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+
+.day-card:hover {
+    border-color: #000;
+    background-color: #fafafa;
+    transform: translateY(-2px);
+}
+
+.day-card p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.day-card .arrow {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.2s ease;
+}
+
+.day-card:hover .arrow {
+    transform: translateX(5px); 
+}
+
+
+.schedule-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.schedule-day {
+    margin-bottom: 50px;
+}
+
+.day-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #888;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+}
+
+
+.match-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px; 
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s ease;
+    text-decoration: none; 
+    color: inherit;
+    background: white;
+}
+
+.match-row:hover {
+    background-color: #f9f9f9;
+    transform: translateX(5px); 
+    border-left: 2px solid #333; 
+}
+
+.teams {
+    font-size: 1.1rem;
+    color: #222;
+    font-weight: 700;
+}
+
+.vs {
+    font-weight: 400;
+    color: #999;
+    font-size: 0.9rem;
+    margin: 0 8px;
+    font-style: italic;
+}
+
+
+.row-arrow {
+    font-size: 1.2rem;
+    color: #ccc;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.match-row:hover .row-arrow {
+    color: #333;
+    transform: translateX(5px);
+}
+
+
+.match-info {
+    display: flex;
+    align-items: center;
+   
+}
+
+@media (max-width: 600px) {
+    .match-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.match-row.gold-match {
+    border-left: 4px solid #F7C600; 
+    background-color: #fffdf5;
+}
+
+
+.match-row.bronze-match {
+    border-left: 4px solid #CD7F32;
+}
+
+.match-row.gold-match:hover,
+.match-row.bronze-match:hover {
+    transform: translateX(5px);
+    background-color: #fff;
+}
+
+.match-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-right: 15px;
+    min-width: 80px;
+    font-weight: bold;
+    border-right: 1px solid #eee;
+    padding-right: 10px;
+}

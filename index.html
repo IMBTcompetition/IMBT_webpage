@@ -38,7 +38,11 @@
       image-rendering: pixelated;
       z-index: 0;
     }
-    .desktop-img { display: block; }
+    .desktop-img { 
+      display: block;
+      object-fit: cover;
+      object-position: center 10%;
+    }
     .mobile-img { display: none; }
     @media (max-width: 800px) {
       .desktop-img { display: none; }
@@ -61,7 +65,7 @@
   left: -14vw;
   top: 75vh;
   position: absolute;
-  background: var(--Svijetlo-zelena, #A3B18A);
+  background: var(--Svijetlo-zelena, #F1FAEE);
   box-shadow: 343.75px 343.75px 343.75px ;
   border-radius: 9999px;
   filter: blur(171.88px);
@@ -73,7 +77,7 @@
   left: 27vw;
   top: 76vh;
   position: absolute;
-  background: var(--Zelena, #588157);
+  background: var(--Zelena, #A8DADC);
   box-shadow: 343.75px 343.75px 343.75px ;
   border-radius: 9999px;
   filter: blur(171.88px);
@@ -85,7 +89,7 @@
   left: 70vw;
   top: 67vh;
   position: absolute;
-  background: var(--Maslinasta, #3A5A40);
+  background: var(--Maslinasta, #457B9D);
   box-shadow: 343.75px 343.75px 343.75px ;
   border-radius: 9999px;
   filter: blur(171.88px);
@@ -161,7 +165,7 @@
   height: 44px;
   position: relative;
   margin: 0;
-  background: var(--Svijetla, #DAD7CD);
+  background: var(--Svijetla, #F1FAEE);
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -171,7 +175,7 @@
 }
 
 .learnmore_span {
-  color: var(--Tamno-zelena, #344E41);
+  color: var(--Tamno-zelena, #1D3557);
   font-size: 20px;
   font-family: Outfit;
   font-weight: 400;
@@ -184,7 +188,7 @@
   height: 44px;
   position: relative;
   margin: 0;
-  background: var(--Svijetla, #DAD7CD);
+  background: var(--Svijetla, #F1FAEE);
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -194,7 +198,7 @@
 }
 
 .register_span {
-  color: var(--Tamno-zelena, #344E41);
+  color: var(--Tamno-zelena, #1D3557);
   font-size: 20px;
   font-family: Outfit;
   font-weight: 400;
@@ -206,7 +210,7 @@
   left: 0px;
   top: -3.75px;
   position: absolute;
-  background: linear-gradient(90deg, #DAD7CD 0%, #A3B18A 100%);
+  background: linear-gradient(90deg, #F1FAEE 0%, #457B9D 100%);
   display: flex;              
   align-items: center;        
   justify-content: center;
@@ -229,7 +233,7 @@
   display: block;
   width: 28px;
   height: 4px;
-  background: #344E41;
+  background: #1D3557;
   margin: 4px 0;
   border-radius: 2px;
   transition: 0.3s;
@@ -252,7 +256,7 @@
     top: 70px;
     left: 0;
     width: 100vw;
-    background: linear-gradient(90deg, #DAD7CD 0%, #A3B18A 100%);
+    background: linear-gradient(90deg, #F1FAEE 0%, #457B9D 100%);
     flex-direction: column;
     align-items: center;
     z-index: 3;
@@ -266,8 +270,8 @@
   }
      
 }
-    .about_span,.battle_span, .registration_span, .eventinfo_span, .staff_span, .partners_span, .contactus_span {
-      color: #344E41;
+    .about_span,.battle_span,.competition_span, .registration_span, .eventinfo_span, .staff_span, .partners_span, .contactus_span {
+      color: #1D3557;
       font-size: 20px;
       padding: 1rem 1.5rem;
       font-family: Outfit;
@@ -306,45 +310,7 @@
       position: relative;
       top: 3.75px;
 }
-.countdown {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 1rem;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-      color: white;
-      font-family: Outfit, Roboto, sans-serif;
-      font-weight: 700;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.45);
-      pointer-events: none;
-    }
-    .countdown .time {
-      background: rgba(0,0,0,0.25);
-      padding: 6px 10px;
-      border-radius: 8px;
-      min-width: 64px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .countdown .time span {
-      font-size: 22px;
-      line-height: 1;
-    }
-    .countdown .time small {
-      font-size: 11px;
-      font-weight: 600;
-      opacity: 0.95;
-    }
 
-
-    @media (max-width: 420px) {
-      .countdown .time { min-width: 50px; padding: 6px 8px; }
-      .countdown .time span { font-size: 18px; }
-      .countdown .time small { font-size: 10px; }
-    }
 
 
 .register-wrapper {
@@ -358,40 +324,6 @@
 }
 
 
-.rectangle-2::before {
-  content: "";
-  position: absolute;
-  left: -8px;
-  right: -8px;
-  top: -14px;
-  height: 28px;
-  background: linear-gradient(180deg,#ff6b6b 0%,#e14d4d 70%);
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
-  z-index: 0;
-}
-
-.register-count-text {
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-  transform: translate(-50%, -8px);
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  pointer-events: none;
-  color: #fff;
-  font-family: Outfit, Roboto, sans-serif;
-  font-weight: 800;
-  font-size: 13px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
-  white-space: nowrap;
-}
-.register-count-text .rc-num { font-size: 14px; line-height: 1; }
-.register-count-text small { font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.95; letter-spacing: 0.3px; }
-
-
 .learn-more-wrapper {
   position: relative;
   display: inline-flex;
@@ -403,40 +335,6 @@
 }
 
 
-.rectangle-3::before {
-  content: "";
-  position: absolute;
-  left: -8px;
-  right: -8px;
-  top: -14px;
-  height: 28px;
-  background: linear-gradient(180deg,#ff6b6b 0%,#e14d4d 70%);
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
-  z-index: 0;
-}
-
-.problem-proposals-text {
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-  transform: translate(-50%, -8px);
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  pointer-events: none;
-  color: #fff;
-  font-family: Outfit, Roboto, sans-serif;
-  font-weight: 800;
-  font-size: 13px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
-  white-space: nowrap;
-}
-
-
-
-.problem-proposals-text small { font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.95; letter-spacing: 0.3px; }
 
 
 
@@ -455,7 +353,7 @@
 </head>
 <body>
   <div class="index">
-    <img class="img desktop-img" src="images/photo_5420625839025492555_y.jpg" alt="Bovec Desktop" />
+    <img class="img desktop-img" src="images/IMG_3434.jpeg" alt="Bovec Desktop" />
     <img class="img mobile-img" src="images/bovec-mobile.png" alt="Bovec Mobile" />
     <div class="ellipses">
       <div class="ellipse ellipse-1"></div>
@@ -468,27 +366,15 @@
       <span class="f-11january2026bovecslovenia_span">5-11 January 2026 · Bovec, Slovenia</span>
       <div class="hero-buttons">
         <div class="learn-more-wrapper">
-        <div class="problem-proposals-text" aria-live="polite">
-          <small>PROBLEM PROPOSALS</small>
-        </div>
         <a href="battle.html"><div class="rectangle-3">
           <span class="learnmore_span">LEARN MORE</span>
         </div></a>
         </div>
            <div class="register-wrapper">
-    <div id="register-countdown" class="register-count-text" aria-live="polite">
-      <span class="rc-num">—</span><small>days left</small>
-    </div>
     <a href="registration.html"><div class="rectangle-2">
       <span class="register_span">REGISTER</span>
     </div></a>
   </div>
-      </div>
-       <div id="countdown" class="countdown" aria-live="polite">
-        <div class="time"><span id="cd-days">00</span><small>DAYS</small></div>
-        <div class="time"><span id="cd-hours">00</span><small>HRS</small></div>
-        <div class="time"><span id="cd-minutes">00</span><small>MIN</small></div>
-        <div class="time"><span id="cd-seconds">00</span><small>SEC</small></div>
       </div>
     </div>
     <div class="rectangle-1">
@@ -504,6 +390,7 @@
         
         <span class="about_span"><a href="index.html">ABOUT</a></span>
         <span class="battle_span"><a href="battle.html">MATH BATTLE</a></span>
+        <span class="competition_span"><a href="competition.html">COMPETITION</a></span>
         <span class="registration_span"><a href="registration.html">REGISTRATION</a></span>
         <span class="eventinfo_span"><a href="event_info.html">EVENT INFO</a></span>
         <span class="staff_span"><a href="staff.html">STAFF</a></span>
@@ -524,62 +411,7 @@
         mainMenu.classList.remove('open');
       }
     });
-
-
-    (function(){
-      const target = new Date('2026-01-05T00:00:00'); // Jan 5 2026 00:00
-      const elDays = document.getElementById('cd-days');
-      const elHours = document.getElementById('cd-hours');
-      const elMinutes = document.getElementById('cd-minutes');
-      const elSeconds = document.getElementById('cd-seconds');
-      const countdownEl = document.getElementById('countdown');
-
-      function pad(n){ return n.toString().padStart(2,'0'); }
-
-      function update(){
-        const now = new Date();
-        let diff = Math.max(0, target - now);
-        if (diff <= 0) {
-          // event started
-          countdownEl.innerHTML = ' <div class="time"><span id="cd-days">00</span><small>DAYS</small></div> <div class="time"><span id="cd-hours">00</span><small>HRS</small></div> <div class="time"><span id="cd-minutes">00</span><small>MIN</small></div> <div class="time"><span id="cd-seconds">00</span><small>SEC</small></div>';
-          clearInterval(timer);
-          return;
-        }
-        const secs = Math.floor(diff / 1000);
-        const days = Math.floor(secs / 86400);
-        const hours = Math.floor((secs % 86400) / 3600);
-        const minutes = Math.floor((secs % 3600) / 60);
-        const seconds = secs % 60;
-
-        elDays.textContent = pad(days);
-        elHours.textContent = pad(hours);
-        elMinutes.textContent = pad(minutes);
-        elSeconds.textContent = pad(seconds);
-      }
-
-      update();
-      const timer = setInterval(update, 1000);
-    })();
-
-    (function(){
-  const regTarget = new Date('2025-11-15T00:00:00');
-  const regEl = document.getElementById('register-countdown');
-
-  function updateReg(){
-    const now = new Date();
-    const diff = regTarget - now;
-    if (diff <= 0) {
-      regEl.innerHTML = `<span class="rc-num">—</span><small>closed</small>`;
-      if (regTimer) clearInterval(regTimer);
-      return;
-    }
-    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    regEl.innerHTML = `<span class="rc-num">${days}</span><small>${days === 1 ? 'day left' : 'days left'}</small>`;
-  }
-
-  updateReg();
-  let regTimer = setInterval(updateReg, 1000 * 60 * 30);
-})();
+   
   </script>
 </body>
 </html>
