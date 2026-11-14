@@ -417,17 +417,17 @@ header img.logo {
 
 .dmfa-logo {
       position: absolute;
-      top:-3.75px;
+      top: 0px;
       height:70px;
-      left:0px;
+      left:-9px;
       margin:0;
       padding:0;
     }
     .dmfa-logo img{
       height: 70px;
       width: auto;
-      position: relative;
-      top: 3.75px;
+      position: static;
+      
 }
 
 
